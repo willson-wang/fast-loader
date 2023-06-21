@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "choice": {
+      "type": "string",
+      "enum": [
+        "swc",
+        "esbuild",
+        "babel"
+      ],
+      "default": "swc"
+    },
+    "choiceOptions": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

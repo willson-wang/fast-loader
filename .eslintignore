@@ -1,0 +1,10 @@
+node_modules
+dist
+*.d.ts
+.vscode
+package.json
+jest.config.js
+src/__tests__/**
+rollup.config.js
+commitlint.config.js
+check-pnpm.js

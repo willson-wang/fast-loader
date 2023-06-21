@@ -1,0 +1,81 @@
+{
+  "name": "@wks/script-loader",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "typings": "dist/index.d.ts",
+  "repository": "https://github.com/willson-wang/script-loader",
+  "author": "willson-wang",
+  "description": "用于处理ts、js、tsx、jsx的loader，内置babel、swc、esbuild，可以通过传入的参数选择代码转换方式，与代码压缩方式",
+  "scripts": {
+    "tips": "请先看 README.md",
+    "build": "tsc -p .",
+    "dev": "tsc -p . --watch",
+    "prepublishOnly": "npm run build",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "ci": "yarn tsc --noEmit && yarn lint:all && yarn spell-check:all && yarn test:coverage",
+    "lint:all": "eslint --ext .js,.jsx,.ts,.tsx ./src",
+    "spell-check:all": "echo '开始拼写检查' && cspell \"**/*.{txt,ts,tsx,js,json,md}\"",
+    "prettier": "prettier --write \"**/**.{js,jsx,tsx,ts,less,md,json}\"",
+    "setPushFollowTags": "echo '本地项目设置git push代码时自动push tag' && git config push.followtags true",
+    "version:pre": "echo '发布预发布beta版本' && cross-env HUSKY=0 standard-version --prerelease beta",
+    "version:patch": "echo '发布补丁版本' && cross-env HUSKY=0 standard-version --release-as patch",
+    "version:minor": "echo '发布小版本' && cross-env HUSKY=0 standard-version --release-as minor",
+    "version:major": "echo '发布主版本' && cross-env HUSKY=0 standard-version --release-as major",
+    "preinstall": "node check-pnpm.js",
+    "prepare": "husky install"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,md,json}": [
+      "prettier --write",
+      "cspell --no-must-find-files"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "yarn test --passWithNoTests --run"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-angular": "^12.1.4",
+    "@swc/core": "^1.3.66",
+    "@types/babel__core": "^7.20.1",
+    "@types/node": "^16.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.60.0",
+    "@typescript-eslint/parser": "^5.60.0",
+    "@vitest/coverage-c8": "^0.29.8",
+    "cross-env": "^7.0.3",
+    "cspell": "^6.31.1",
+    "esbuild": "^0.18.6",
+    "eslint": "^8.43.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-promise": "^6.1.1",
+    "get-tsconfig": "^4.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
+    "prettier": "^2.3.2",
+    "standard-version": "^9.3.1",
+    "typescript": "^4.3.4",
+    "vitest": "^0.29.8",
+    "webpack": "^5.87.0"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.22.5",
+    "@swc/core": "^1.3.66",
+    "esbuild": "^0.18.6",
+    "get-tsconfig": "^4.6.0",
+    "webpack": "^5.87.0"
+  },
+  "dependencies": {
+    "schema-utils": "^4.2.0",
+    "tslib": "^2.5.3"
+  }
+}
