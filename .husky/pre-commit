@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-yarn setPushFollowTags && yarn tsc --noEmit && yarn lint-staged --verbose
+pnpm setPushFollowTags && pnpm tsc --noEmit && pnpm lint-staged --verbose

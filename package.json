@@ -1,9 +1,9 @@
 {
-  "name": "@wks/script-loader",
+  "name": "fast-loader",
   "version": "0.0.1",
   "main": "./dist/index.js",
   "typings": "dist/index.d.ts",
-  "repository": "https://github.com/willson-wang/script-loader",
+  "repository": "https://github.com/willson-wang/fast-loader",
   "author": "willson-wang",
   "description": "用于处理ts、js、tsx、jsx的loader，内置babel、swc、esbuild，可以通过传入的参数选择代码转换方式，与代码压缩方式",
   "scripts": {
@@ -39,7 +39,7 @@
     ],
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix",
-      "yarn test --passWithNoTests --run"
+      "pnpm test --passWithNoTests --run"
     ]
   },
   "devDependencies": {
